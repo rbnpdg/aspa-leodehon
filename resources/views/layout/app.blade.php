@@ -161,17 +161,18 @@
                 <div>
                     <h3 class="text-xl font-semibold mb-4">Asrama Putra Leo Dehon</h3>
                     <p class="text-blue-100 mb-4">
-                        Tempat tinggal yang nyaman untuk mendukung pendidikan dan pembentukan karakter mahasiswa.
+                        Tempat para remaja katolik dibimbing menuju kedewasaan 
+                        dalam iman maupun kepribadian.
                     </p>
                     <div class="flex space-x-4">
-                        <a href="#" class="text-blue-100 hover:text-white transition-colors duration-200">
-                            <i class="fab fa-facebook text-xl"></i>
+                        <a target="_blank" href="#" class="text-blue-100 hover:text-white transition-colors duration-200">
+                            <i class="fab fa-whatsapp text-xl"></i>
                         </a>
-                        <a href="#" class="text-blue-100 hover:text-white transition-colors duration-200">
+                        <a target="_blank" href="https://www.instagram.com/aspaleodehon/" class="text-blue-100 hover:text-white transition-colors duration-200">
                             <i class="fab fa-instagram text-xl"></i>
                         </a>
-                        <a href="#" class="text-blue-100 hover:text-white transition-colors duration-200">
-                            <i class="fab fa-whatsapp text-xl"></i>
+                        <a target="_blank" href="https://www.youtube.com/c/AsramaPutraLeoDehon" class="text-blue-100 hover:text-white transition-colors duration-200">
+                            <i class="fab fa-youtube text-xl"></i>
                         </a>
                     </div>
                 </div>
@@ -179,7 +180,7 @@
                 <div>
                     <h3 class="text-xl font-semibold mb-4">Kontak</h3>
                     <div class="space-y-2 text-blue-100">
-                        <p><i class="fas fa-map-marker-alt mr-2"></i>Jl. Contoh Alamat No. 123, Kota</p>
+                        <p><i class="fas fa-map-marker-alt mr-2"></i>Jl. Semeru No. 57, Kota Metro, Lampung</p>
                         <p><i class="fas fa-phone mr-2"></i>+62 123 456 7890</p>
                         <p><i class="fas fa-envelope mr-2"></i>info@asramaleodhon.com</p>
                     </div>
@@ -192,6 +193,7 @@
                         <li><a href="#fasilitas" class="hover:text-white transition-colors duration-200">Fasilitas</a></li>
                         <li><a href="#kegiatan" class="hover:text-white transition-colors duration-200">Kegiatan</a></li>
                         <li><a href="#visi-misi" class="hover:text-white transition-colors duration-200">Visi Misi</a></li>
+                        <li><a href="#sejarah" class="hover:text-white transition-colors duration-200">Sejarah</a></li>
                     </ul>
                 </div>
             </div>

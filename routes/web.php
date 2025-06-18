@@ -1,6 +1,11 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\viewController;
+
+
+Route::get('/login', [viewController::class, 'loginShow'])->name('show-login');
+Route::get('/register', [viewcontroller::class, 'registerShow'])->name('show-register');
 
 Route::get('/', function () {
     return view('welcome');
