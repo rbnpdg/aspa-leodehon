@@ -75,12 +75,38 @@
                     <!-- Header -->
                     <div class="text-center space-y-2">
                         <h1 class="text-4xl font-bold text-gray-900">Selamat datang!</h1>
-                        <p class="text-gray-600">Masukkan username dan password Anda!</p>
+                        <p class="text-gray-600">Silahkan lengkapi form berikut!</p>
                     </div>
 
-                    <!-- Login Form -->
+                    <!-- Register Form -->
                     <form action="#" method="POST" class="space-y-6">
                         @csrf
+
+                        <!-- Nama Field -->
+                        <div class="space-y-2">
+                            <input 
+                                type="text" 
+                                id="name" 
+                                name="name" 
+                                placeholder="Nama Lengkap"
+                                value="{{ old('name') }}"
+                                class="w-full px-4 py-4 bg-gray-50 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all duration-200 placeholder-gray-500"
+                                required
+                            >
+                        </div>
+
+                        <!-- Username Field -->
+                        <div class="space-y-2">
+                            <input 
+                                type="text" 
+                                id="username" 
+                                name="username" 
+                                placeholder="Username"
+                                value="{{ old('name') }}"
+                                class="w-full px-4 py-4 bg-gray-50 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all duration-200 placeholder-gray-500"
+                                required
+                            >
+                        </div>
 
                         <!-- Email/Username Field -->
                         <div class="space-y-2">
@@ -88,7 +114,7 @@
                                 type="text" 
                                 id="email" 
                                 name="email" 
-                                placeholder="Email atau Username"
+                                placeholder="Email"
                                 value="{{ old('email') }}"
                                 class="w-full px-4 py-4 bg-gray-50 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all duration-200 placeholder-gray-500"
                                 required
@@ -132,20 +158,20 @@
                             </a>
                         </div>
 
-                        <!-- Sign In Button -->
+                        <!-- Resgiter Button -->
                         <button 
                             type="submit" 
                             class="w-full bg-primary hover:bg-primary-dark text-white font-semibold py-4 px-6 rounded-xl transition-all duration-200 transform hover:scale-[1.02] focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2"
                         >
-                            Sign In
+                            Register
                         </button>
 
-                        <!-- Register Link -->
+                        <!-- Sign In Link -->
                         <div class="text-center">
                             <p class="text-gray-600">
-                                Belum memiliki akun?
-                                <a href="{{ route('show-register') }}" class="text-primary hover:text-primary-dark font-semibold transition-colors">
-                                    Daftar Sekarang
+                                Sudah memiliki akun?
+                                <a href="{{ route('show-login') }}" class="text-primary hover:text-primary-dark font-semibold transition-colors">
+                                    Masuk Sekarang
                                 </a>
                             </p>
                         </div>

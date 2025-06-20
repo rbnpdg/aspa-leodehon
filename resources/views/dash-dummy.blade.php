@@ -1,4 +1,4 @@
-@extends('layout.app')
+@extends('layout.app-dummy')
 
 @section('content')
     <section id="beranda" class="relative z-0 text-white h-[32rem] sm:h-[36rem] md:h-[40rem] lg:h-[44rem] xl:h-[48rem]">
@@ -43,50 +43,50 @@
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                 <div class="bg-white rounded-lg shadow-lg p-6 hover:shadow-xl transition-shadow duration-200" data-aos="fade-down-right" data-aos-delay="100">
                     <div class="text-primary text-4xl mb-4">
-                        <i class="fas fa-couch"></i>
+                        <i class="fas fa-bed"></i>
                     </div>
-                    <h3 class="text-xl font-semibold mb-3">Ruang Tamu</h3>
-                    <p class="text-gray-600 text-justify">Disediakan untuk keperluan menerima tamu atau kunjungan keluarga penghuni asrama</p>
+                    <h3 class="text-xl font-semibold mb-3">Kamar Nyaman</h3>
+                    <p class="text-gray-600">Kamar dengan fasilitas yang lengkap untuk menciptakan istirahat optimal</p>
                 </div>
                 
                 <div class="bg-white rounded-lg shadow-lg p-6 hover:shadow-xl transition-shadow duration-200" data-aos="fade-down" data-aos-delay="200">
-                    <div class="text-primary text-4xl mb-4">
-                        <i class="fas fa-briefcase"></i>
+                    <div class="text-primary text-4xl mb-4"
+                        <i class="fas fa-wifi"></i>
                     </div>
-                    <h3 class="text-xl font-semibold mb-3">Kantor</h3>
-                    <p class="text-gray-600 text-justify">Pusat administrasi dan layanan informasi penghuni asrama yang dikelola oleh staff yang selalu siap melayani</p>
+                    <h3 class="text-xl font-semibold mb-3">WiFi</h3>
+                    <p class="text-gray-600">Akses internet cepat dan stabil di seluruh area asrama untuk mendukung aktivitas belajar</p>
                 </div>
                 
                 <div class="bg-white rounded-lg shadow-lg p-6 hover:shadow-xl transition-shadow duration-200" data-aos="fade-down-left" data-aos-delay="300">
                     <div class="text-primary text-4xl mb-4">
                         <i class="fas fa-utensils"></i>
                     </div>
-                    <h3 class="text-xl font-semibold mb-3">Ruang Makan (Refter)</h3>
-                    <p class="text-gray-600 text-justify">Ruangan khusus untuk bersantap yang dikelola dengan standar kebersihan yang tinggi</p>
+                    <h3 class="text-xl font-semibold mb-3">Dapur Bersama</h3>
+                    <p class="text-gray-600">Dapur lengkap dengan peralatan masak untuk kebutuhan memasak sehari-hari</p>
                 </div>
                 
                 <div class="bg-white rounded-lg shadow-lg p-6 hover:shadow-xl transition-shadow duration-200" data-aos="fade-up-right" data-aos-delay="300">
                     <div class="text-primary text-4xl mb-4">
-                        <i class="fas fa-church"></i>
+                        <i class="fas fa-book"></i>
                     </div>
-                    <h3 class="text-xl font-semibold mb-3">Kapel</h3>
-                    <p class="text-gray-600 text-justify">Tempat ibadah yang disediakan bagi penghuni asrama untuk memenuhi kebutuhan rohani penghuni asrama</p>
+                    <h3 class="text-xl font-semibold mb-3">Ruang Belajar</h3>
+                    <p class="text-gray-600">Ruang belajar yang tenang dan kondusif dengan berbagai fasilitas</p>
                 </div>
                 
                 <div class="bg-white rounded-lg shadow-lg p-6 hover:shadow-xl transition-shadow duration-200" data-aos="fade-up" data-aos-delay="200">
                     <div class="text-primary text-4xl mb-4">
-                        <i class="fas fa-tree"></i>
+                        <i class="fas fa-bicycle"></i>
                     </div>
-                    <h3 class="text-xl font-semibold mb-3">Taman</h3>
-                    <p class="text-gray-600 text-justify">Ruang terbuka hijau yang disediakan sebagai tempat bersantai bagi para penghuni asrama</p>
+                    <h3 class="text-xl font-semibold mb-3">Parkir Aman</h3>
+                    <p class="text-gray-600">Area parkir yang luas dan aman dengan sistem keamanan 24 jam</p>
                 </div>
                 
                 <div class="bg-white rounded-lg shadow-lg p-6 hover:shadow-xl transition-shadow duration-200" data-aos="fade-up-left" data-aos-delay="100">
                     <div class="text-primary text-4xl mb-4">
                         <i class="fas fa-shield-alt"></i>
                     </div>
-                    <h3 class="text-xl font-semibold mb-3">Ruang Laundry</h3>
-                    <p class="text-gray-600 text-justify">Fasilitas penunjang bagi penghuni asrama dalam menjaga kebersihan pakaian pribadi yang dilengkapi dengan peralatan mencuci dan menjemur yang memadai</p>
+                    <h3 class="text-xl font-semibold mb-3">Keamanan 24 Jam</h3>
+                    <p class="text-gray-600">Sistem keamanan terpadu dengan petugas jaga 24 jam untuk menjamin keamanan penghuni</p>
                 </div>
             </div>
         </div>
@@ -157,7 +157,7 @@
             </div>
         </div>
     </section>
-    <svg width="100%" height="100%" id="svg" viewBox="0 0 1440 390" xmlns="http://www.w3.org/2000/svg" class="transition duration-300 ease-in-out delay-150"><style>
+        <svg width="100%" height="100%" id="svg" viewBox="0 0 1440 390" xmlns="http://www.w3.org/2000/svg" class="transition duration-300 ease-in-out delay-150"><style>
           .path-0{
             animation:pathAnim-0 4s;
             animation-timing-function: linear;

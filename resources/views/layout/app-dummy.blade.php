@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Asrama Putra Leo Dehon</title>
     <link rel="icon" type="image/png" href="{{ asset('img/logo-yayasan-cropped.png') }}">
-    <!-- AOS (Animate On Scroll) -->
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
@@ -22,57 +21,9 @@
     </script>
     <link rel="icon" type="image/png" href="{{ asset('img/logo-yayasan-cropped.png') }}">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
-    <style>
-        /* Custom CSS for navbar hover animation */
-        .nav-link {
-            position: relative;
-            display: inline-block;
-            padding-bottom: 4px;
-        }
-        
-        .nav-link::after {
-            content: '';
-            position: absolute;
-            width: 0;
-            height: 2px;
-            bottom: 0;
-            left: 50%;
-            background-color: #0539FF;
-            transition: all 0.3s ease-in-out;
-            transform: translateX(-50%);
-        }
-        
-        .nav-link:hover::after {
-            width: 100%;
-        }
-        
-        .nav-link:hover {
-            color: #0539FF;
-        }
-
-        /* Custom CSS for mobile menu hover animation */
-        .mobile-nav-link {
-            position: relative;
-            display: block;
-            padding: 8px 0;
-            margin: 4px 0;
-        }
-
-        /* Animation for mobile menu slide */
-        .mobile-menu-enter {
-            opacity: 0;
-            transform: translateY(-10px);
-            transition: all 0.3s ease-in-out;
-        }
-        
-        .mobile-menu-enter-active {
-            opacity: 1;
-            transform: translateY(0);
-        }
-    </style>
 </head>
-<body class="bg-white w-full overflow-x-hidden">
-    <nav class="bg-white shadow-lg border-b-2 border-primary fixed top-0 z-30 w-full">
+<body class="bg-white">
+    <nav class="bg-white shadow-lg border-b-2 border-primary sticky top-0 z-50">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex items-center justify-between h-20">
             <div class="flex items-center flex-shrink-0">
@@ -80,72 +31,56 @@
             </div>
 
             <div class="hidden md:flex space-x-8 absolute left-1/2 transform -translate-x-1/2">
-                <a href="#beranda" class="nav-link text-gray-700 transition-colors duration-300 font-medium">Beranda</a>
-                <a href="#fasilitas" class="nav-link text-gray-700 transition-colors duration-300 font-medium">Fasilitas</a>
-                <a href="#kegiatan" class="nav-link text-gray-700 transition-colors duration-300 font-medium">Kegiatan</a>
-                <a href="#visi-misi" class="nav-link text-gray-700 transition-colors duration-300 font-medium">Visi Misi</a>
-                <a href="#sejarah" class="nav-link text-gray-700 transition-colors duration-300 font-medium">Sejarah</a>
-                <a href="#" class="nav-link text-gray-700 transition-colors duration-300 font-medium">Tentang kami</a>
+                <a href="#beranda" class="text-gray-700 hover:text-primary transition-colors duration-200 font-medium">Beranda</a>
+                <a href="#fasilitas" class="text-gray-700 hover:text-primary transition-colors duration-200 font-medium">Fasilitas</a>
+                <a href="#kegiatan" class="text-gray-700 hover:text-primary transition-colors duration-200 font-medium">Kegiatan</a>
+                <a href="#visi-misi" class="text-gray-700 hover:text-primary transition-colors duration-200 font-medium">Visi Misi</a>
+                <a href="#sejarah" class="text-gray-700 hover:text-primary transition-colors duration-200 font-medium">Sejarah</a>
             </div>
 
             <div class="hidden md:flex items-center space-x-3">
-                @auth
-                    <span class="text-gray-700 font-medium">Halo, {{ Auth::user()->name }}!</span>
-                    <button id="profileButton" class="flex items-center">
-                        <img src="{{ asset('img/pp.png') }}" alt="Profile" class="h-12 w-12 rounded-full border-2 border-primary">
-                    </button>
-                    <div id="profileDropdown" class="absolute right-4 top-20 w-48 bg-white rounded-md shadow-lg border border-gray-200 opacity-0 scale-95 transform transition-all duration-300 pointer-events-none">
-                        <a href="#profil" class="block px-4 py-2 text-sm text-gray-700 hover:bg-primary hover:text-white transition-colors duration-200">
-                            <i class="fas fa-user mr-2"></i>Profil
-                        </a>
-                        <a href="#edit-profil" class="block px-4 py-2 text-sm text-gray-700 hover:bg-primary hover:text-white transition-colors duration-200">
-                            <i class="fas fa-edit mr-2"></i>Edit Profil
-                        </a>
-                        <hr class="my-1">
-                        <a href="#logout" class="block px-4 py-2 text-sm text-red-600 hover:bg-red-50 transition-colors duration-200">
-                            <i class="fas fa-sign-out-alt mr-2"></i>Logout
-                        </a>
-                    </div>
-                @else
-                    <a href="{{ route('show-login') }}" class="flex items-center px-4 py-2 border-2 border-primary text-primary rounded-full hover:bg-primary hover:text-white transition duration-300">
-                        <b>Login</b>
+                <span class="text-gray-700 font-medium">Halo, {{ Auth::user()->name ?? 'Singh' }}!</span>
+                <button id="profileButton" class="flex items-center">
+                    <img src="{{ asset('img/pp.png') }}" alt="Profile" class="h-12 w-12 rounded-full border-2 border-primary">
+                </button>
+                <div id="profileDropdown" class="absolute right-4 top-20 w-48 bg-white rounded-md shadow-lg border border-gray-200 hidden">
+                    <a href="#profil" class="block px-4 py-2 text-sm text-gray-700 hover:bg-primary hover:text-white transition-colors duration-200">
+                        <i class="fas fa-user mr-2"></i>Profil
                     </a>
-                @endauth
+                    <a href="#edit-profil" class="block px-4 py-2 text-sm text-gray-700 hover:bg-primary hover:text-white transition-colors duration-200">
+                        <i class="fas fa-edit mr-2"></i>Edit Profil
+                    </a>
+                    <hr class="my-1">
+                    <a href="#logout" class="block px-4 py-2 text-sm text-red-600 hover:bg-red-50 transition-colors duration-200">
+                        <i class="fas fa-sign-out-alt mr-2"></i>Logout
+                    </a>
+                </div>
             </div>
 
             <!-- Mobile Menu Button -->
             <div class="md:hidden">
-                <button id="mobileMenuButton" class="text-gray-700 me-4 hover:text-primary transition-colors duration-200">
-                    <i id="mobileMenuIcon" class="fas fa-bars text-xl transition-transform duration-300"></i>
+                <button id="mobileMenuButton" class="text-gray-700 me-4 hover:text-primary">
+                    <i class="fas fa-bars text-xl"></i>
                 </button>
             </div>
-
-            <div id="mobileMenu" class="md:hidden hidden absolute right-2 top-16 bg-white shadow-lg border rounded-lg z-50 w-48 mobile-menu-enter">
+            <div id="mobileMenu" class="md:hidden hidden absolute right-6 top-16 bg-white shadow-md border rounded-md z-50 w-40">
                 <div class="px-4 py-4 space-y-1">
-                    <a href="#beranda" class="mobile-nav-link text-gray-700 font-medium">Beranda</a>
-                    <a href="#fasilitas" class="mobile-nav-link text-gray-700 font-medium">Fasilitas</a>
-                    <a href="#kegiatan" class="mobile-nav-link text-gray-700 font-medium">Kegiatan</a>
-                    <a href="#visi-misi" class="mobile-nav-link text-gray-700 font-medium">Visi Misi</a>
-                    <a href="#sejarah" class="mobile-nav-link text-gray-700 font-medium">Sejarah</a>
-                    <a href="#" class="mobile-nav-link text-gray-700 font-medium">Tentang kami</a>
-
-                    <div class="border-t border-gray-200 pt-3 mt-3">
-                        @auth
-                            <a href="#profil" class="mobile-nav-link flex items-center text-gray-700 font-medium">
-                                <img src="{{ asset('img/pp.png') }}" alt="Profile" class="h-4 w-4 rounded-full border-2 border-primary mr-2">
-                                <span>{{ Auth::user()->name }}</span>
-                            </a>
-                            <a href="#edit-profil" class="mobile-nav-link text-gray-700 font-medium">
-                                <i class="fas fa-edit mr-2"></i>Edit Profil
-                            </a>
-                            <a href="#logout" class="mobile-nav-link text-red-600 font-medium hover:text-red-800">
-                                <i class="fas fa-sign-out-alt mr-2"></i>Logout
-                            </a>
-                        @else
-                            <a href="{{ route('show-login') }}" class="mobile-nav-link text-blue-600 font-medium hover:text-blue-800">
-                                <i class="fas fa-sign-in-alt mr-2"></i>Login
-                            </a>
-                        @endauth
+                    <a href="#beranda" class="block text-gray-700 hover:text-primary transition-colors duration-200">Beranda</a>
+                    <a href="#fasilitas" class="block text-gray-700 hover:text-primary transition-colors duration-200">Fasilitas</a>
+                    <a href="#kegiatan" class="block text-gray-700 hover:text-primary transition-colors duration-200">Kegiatan</a>
+                    <a href="#visi-misi" class="block text-gray-700 hover:text-primary transition-colors duration-200">Visi Misi</a>
+                    <a href="#sejarah" class="block text-gray-700 hover:text-primary transition-colors duration-200">Sejarah</a>
+                    <div class="border-t border-gray-200 pt-2">
+                        <a href="#profil" class="flex items-center text-gray-700 hover:text-primary transition-colors duration-200">
+                            <img src="{{ asset('img/pp.png') }}" alt="Profile" class="h-4 rounded-full border-2 border-primary mr-2">
+                            <span>Profil</span>
+                        </a>
+                        <a href="#edit-profil" class="block text-gray-700 hover:text-primary transition-colors duration-200">
+                            <i class="fas fa-edit mr-2"></i>Edit Profil
+                        </a>
+                        <a href="#logout" class="block text-red-600 hover:text-red-800 transition-colors duration-200">
+                            <i class="fas fa-sign-out-alt mr-2"></i>Logout
+                        </a>
                     </div>
                 </div>
             </div>
@@ -290,26 +225,13 @@
             }
         });
         
-        // Mobile menu functionality with animation
+        // Mobile menu functionality
         const mobileMenuButton = document.getElementById('mobileMenuButton');
         const mobileMenu = document.getElementById('mobileMenu');
-        const mobileMenuIcon = document.getElementById('mobileMenuIcon');
         
         if (mobileMenuButton) {
             mobileMenuButton.addEventListener('click', function() {
-                if (mobileMenu.classList.contains('hidden')) {
-                    // Show menu
-                    mobileMenu.classList.remove('hidden');
-                    mobileMenu.classList.add('mobile-menu-enter-active');
-                    mobileMenuIcon.classList.add('rotate-90');
-                } else {
-                    // Hide menu
-                    mobileMenu.classList.remove('mobile-menu-enter-active');
-                    mobileMenuIcon.classList.remove('rotate-90');
-                    setTimeout(() => {
-                        mobileMenu.classList.add('hidden');
-                    }, 300);
-                }
+                mobileMenu.classList.toggle('hidden');
             });
         }
         
@@ -326,26 +248,9 @@
                 }
                 // Close mobile menu if open
                 if (mobileMenu && !mobileMenu.classList.contains('hidden')) {
-                    mobileMenu.classList.remove('mobile-menu-enter-active');
-                    mobileMenuIcon.classList.remove('rotate-90');
-                    setTimeout(() => {
-                        mobileMenu.classList.add('hidden');
-                    }, 300);
+                    mobileMenu.classList.add('hidden');
                 }
             });
-        });
-
-        // Close mobile menu when clicking outside
-        document.addEventListener('click', function(e) {
-            if (!mobileMenuButton.contains(e.target) && !mobileMenu.contains(e.target)) {
-                if (!mobileMenu.classList.contains('hidden')) {
-                    mobileMenu.classList.remove('mobile-menu-enter-active');
-                    mobileMenuIcon.classList.remove('rotate-90');
-                    setTimeout(() => {
-                        mobileMenu.classList.add('hidden');
-                    }, 300);
-                }
-            }
         });
     </script>
 </body>
