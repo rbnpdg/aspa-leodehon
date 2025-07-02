@@ -2,50 +2,76 @@
 
 namespace App\Models;
 
-// use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
-use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Database\Eloquent\Concerns\HasUuids;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class User extends Authenticatable
 {
-    /** @use HasFactory<\Database\Factories\UserFactory> */
-    use HasFactory, Notifiable;
+    use HasFactory, Notifiable, HasUuids, SoftDeletes;
 
-    /**
-     * The attributes that are mass assignable.
-     *
-     * @var list<string>
-     */
+    /* --- UUID settings --- */
+    public $incrementing = false;
+    protected $keyType   = 'string';
 
-    protected $table = 'users';
+    /* --- kolom yang boleh di‑mass‑assign --- */
     protected $fillable = [
+        'id',          // ← tambahkan
         'name',
+        'username',
         'email',
         'password',
+        'is_active',
+        'foto_profil',
     ];
 
-    /**
-     * The attributes that should be hidden for serialization.
-     *
-     * @var list<string>
-     */
-    protected $hidden = [
-        'password',
-        'remember_token',
+    protected $hidden = ['password', 'remember_token'];
+
+    protected $casts = [
+        'is_active'         => 'boolean',
+        'email_verified_at' => 'datetime',
+        'password'          => 'hashed',   // biarkan hashing otomatis
     ];
 
-    /**
-     * Get the attributes that should be cast.
-     *
-     * @return array<string, string>
-     */
-    protected function casts(): array
+    public function institutions(): BelongsToMany
     {
-        return [
-            'email_verified_at' => 'datetime',
-            'password' => 'hashed',
-        ];
+        return $this->belongsToMany(Institution::class, 'institution_user_roles')
+                    ->withPivot('role_id')
+                    ->withTimestamps();
     }
+
+    public function roles(): BelongsToMany
+    {
+        return $this->belongsToMany(Role::class, 'institution_user_roles')
+                    ->withPivot('institution_id')
+                    ->withTimestamps();
+    }
+
+    public function hasVerifiedEmail()
+    {
+        return !is_null($this->email_verified_at);
+    }
+
+    public function markEmailAsVerified()
+    {
+        return $this->forceFill([
+            'email_verified_at' => $this->freshTimestamp(),
+        ])->save();
+    }
+     public function institutionUserRoles()
+    {
+        return $this->hasMany(InstitutionUserRole::class);
+    }
+    public function hasRole(string $roleName): bool
+    {
+        // Memeriksa apakah ada peran dalam relasi 'roles' yang namanya cocok
+        return $this->roles()->where('name', $roleName)->exists();
+    }
+    public function siswa()
+    {
+        return $this->hasOne(Siswa::class, 'user_id', 'id');
+    }
+
 }

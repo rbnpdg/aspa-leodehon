@@ -6,31 +6,25 @@ use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
 
-class RoleSeeder extends Seeder
+class InstitutionSeeder extends Seeder
 {
     public function run()
     {
-        $roles = [
+        $institutions = [
             [
                 'id' => Str::uuid(),
-                'name' => 'Admin', 
+                'name' => 'airlangga', 
                 'created_at' => now(), 
                 'updated_at' => now()
             ],
             [
                 'id' => Str::uuid(),
-                'name' => 'Teacher', 
-                'created_at' => now(), 
-                'updated_at' => now()
-            ],
-            [
-                'id' => Str::uuid(),
-                'name' => 'Student', 
+                'name' => 'asrama', 
                 'created_at' => now(), 
                 'updated_at' => now()
             ],
         ];
 
-        DB::table('roles')->insert($roles);
+        DB::table('institutions')->insert($institutions);
     }
 }

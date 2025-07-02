@@ -7,6 +7,9 @@
     <link rel="icon" type="image/png" href="{{ asset('img/logo-yayasan-cropped.png') }}">
     <!-- AOS (Animate On Scroll) -->
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <!-- SweetAlert2 -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <!-- Tailwind -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
@@ -79,7 +82,7 @@
                     </div>
 
                     <!-- Login Form -->
-                    <form action="#" method="POST" class="space-y-6">
+                    <form action="{{ route('login.post') }}" method="POST" class="space-y-6">
                         @csrf
 
                         <!-- Email/Username Field -->
@@ -93,9 +96,6 @@
                                 class="w-full px-4 py-4 bg-gray-50 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all duration-200 placeholder-gray-500"
                                 required
                             >
-                            @error('email')
-                                <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
-                            @enderror
                         </div>
 
                         <!-- Password Field -->
@@ -120,9 +120,6 @@
                                     </svg>
                                 </button>
                             </div>
-                            @error('password')
-                                <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
-                            @enderror
                         </div>
 
                         <!-- Forgot Password Link -->
@@ -144,7 +141,7 @@
                         <div class="text-center">
                             <p class="text-gray-600">
                                 Belum memiliki akun?
-                                <a href="{{ route('show-register') }}" class="text-primary hover:text-primary-dark font-semibold transition-colors">
+                                <a href="{{ route('register') }}" class="text-primary hover:text-primary-dark font-semibold transition-colors">
                                     Daftar Sekarang
                                 </a>
                             </p>
@@ -195,5 +192,40 @@
             });
         });
     </script>
+    
+    @if (session('success'))
+        <script>
+            Swal.fire({
+                toast: true,
+                position: 'top-end',
+                icon: 'success',
+                title: @json(session('success')),
+                showConfirmButton: false,
+                timer: 3000,
+                timerProgressBar: true,
+            });
+        </script>
+    @endif
+
+    @if (session('error'))
+        <script>
+            Swal.fire({
+                icon: 'error',
+                title: 'Oops...',
+                text: @json(session('error')),
+            });
+        </script>
+    @endif
+
+    {{-- Validasi form (menampilkan list error pertama) --}}
+    @if ($errors->any())
+        <script>
+            Swal.fire({
+                icon: 'error',
+                title: 'Gagal Login',
+                text: @json($errors->first()),
+            });
+        </script>
+    @endif
 </body>
 </html>

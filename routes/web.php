@@ -3,28 +3,30 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\viewController;
 use App\Http\Controllers\loginController;
-
-//view route
-Route::get('/login', [viewController::class, 'loginShow'])->name('show-login');
-Route::get('/register', [viewcontroller::class, 'registerShow'])->name('show-register');
-Route::get('/tentang-kami', [viewcontroller::class, 'tentangShow'])->name('show-tentang');
+use App\Http\Controllers\profileController;
 
 Route::get('/', function () {
     return view('welcome');
 })->name('home');
 
-// Profile routes (require authentication)
-Route::middleware(['auth'])->group(function () {
-    Route::get('/profil', function () {
-        return view('profil');
-    })->name('profil');
-    
-    Route::get('/edit-profil', function () {
-        return view('edit-profil');
-    })->name('edit-profil');
-    
-    Route::post('/logout', function () {
-        auth()->logout();
-        return redirect('/');
-    })->name('logout');
+/* ---------- HALAMAN PUBLIK / TAMU ---------- */
+Route::middleware('guest')->group(function () {
+    Route::get('/login',  [LoginController::class, 'showLogin'])->name('login');
+    Route::post('/login', [LoginController::class, 'login'])->name('login.post');
+    Route::get('/register', [loginController::class, 'showRegister'])->name('register');
+    Route::post('/register', [loginController::class, 'register']);
 });
+
+/* ---------- HARUS LOGIN ---------- */
+Route::middleware(['auth'])->group(function () {
+    Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
+    Route::get('/profile', [viewController::class, 'showProfile'])->name('profile.show');
+    Route::get('/profile/edit', [viewController::class, 'showEdit'])->name('profile.edit');
+    Route::put('/profile/update', [ProfileController::class, 'update'])->name('profile.update');
+});
+
+/* ---------- Contoh dashboard ---------- */
+Route::middleware(['auth'])->get('/dashboard', function () {
+    return view('dashboard');
+})->name('dashboard');
+
