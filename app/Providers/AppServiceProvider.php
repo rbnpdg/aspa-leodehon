@@ -20,8 +20,8 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        if (app()->environment('local')) {    // atau cek header 'x-forwarded-proto'
-            URL::forceScheme('https');
-        }
+        // if (app()->environment('local')) {    // atau cek header 'x-forwarded-proto'
+        //     URL::forceScheme('https');
+        // }
     }
 }

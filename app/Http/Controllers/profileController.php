@@ -15,17 +15,19 @@ class profileController extends Controller
             'name' => 'required|string|max:255',
             'email' => 'required|email|unique:users,email,' . $user->id,
             'username' => 'required|string|max:255|unique:users,username,' . $user->id,
+            'username' => 'nullable|string|max:255',
             'foto_profil' => 'nullable|image|mimes:jpg,jpeg,png|max:10048',
         ]);
 
         if ($request->hasFile('foto_profil')) {
-            // hapus foto lama jika ada
-            if ($user->foto_profil && Storage::exists($user->foto_profil)) {
-                Storage::delete($user->foto_profil);
+
+            if ($user->foto_profil && Storage::disk('public')->exists($user->foto_profil)) {
+                Storage::disk('public')->delete($user->foto_profil);
             }
 
-            // simpan foto baru
-            $validated['foto_profil'] = $request->file('foto_profil')->store('foto-profil', 'public');
+
+            $validated['foto_profil'] = $request->file('foto_profil')
+                                               ->store('foto-profil', 'public');
         }
 
         $user->update($validated);

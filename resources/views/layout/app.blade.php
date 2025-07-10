@@ -117,7 +117,6 @@
                 <a href="#kegiatan"  class="nav-link text-gray-700 font-medium transition-colors">Kegiatan</a>
                 <a href="#visi-misi" class="nav-link text-gray-700 font-medium transition-colors">Visi Misi</a>
                 <a href="#sejarah"  class="nav-link text-gray-700 font-medium transition-colors">Sejarah</a>
-                <a href="#"        class="nav-link text-gray-700 font-medium transition-colors">Tentang kami</a>
             </div>
 
             <!-- Desktop Right Section -->
@@ -127,7 +126,8 @@
 
                     <!-- Foto profil -->
                     <button id="profileButton" class="flex items-center">
-                        <img src="{{ asset('img/pp.png') }}" alt="Profile" class="h-12 w-12 rounded-full border-2 border-primary">
+                        <img src="{{ Auth::user()   ->foto_profil ? Storage::url(Auth::user()->foto_profil) : asset('img/pp.png') }}" alt="foto"
+                             class="h-12 w-12 rounded-full border-2 border-primary">
                     </button>
 
                     <!-- DROPDOWN -->
@@ -175,7 +175,6 @@
                     <a href="#kegiatan"  class="mobile-nav-link text-gray-700 font-medium block text-xl">Kegiatan</a>
                     <a href="#visi-misi" class="mobile-nav-link text-gray-700 font-medium block text-xl">Visi Misi</a>
                     <a href="#sejarah"   class="mobile-nav-link text-gray-700 font-medium block text-xl">Sejarah</a>
-                    <a href="#"          class="mobile-nav-link text-gray-700 font-medium block text-xl">Tentang kami</a>
 
                     <div class="border-t border-gray-200 pt-3 mt-3">
                         @auth

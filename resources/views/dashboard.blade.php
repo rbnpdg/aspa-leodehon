@@ -48,37 +48,37 @@
     </div>
 </div>
 @if (session('success'))
-        <script>
-            Swal.fire({
-                toast: true,
-                position: 'top-end',
-                icon: 'success',
-                title: @json(session('success')),
-                showConfirmButton: false,
-                timer: 3000,
-                timerProgressBar: true,
-            });
-        </script>
-    @endif
+    <script>
+        Swal.fire({
+            toast: true,
+            position: 'top-end',
+            icon: 'success',
+            title: @json(session('success')),
+            showConfirmButton: false,
+            timer: 3000,
+            timerProgressBar: true,
+        });
+    </script>
+@endif
 
-    @if (session('error'))
-        <script>
-            Swal.fire({
-                icon: 'error',
-                title: 'Oops...',
-                text: @json(session('error')),
-            });
-        </script>
-    @endif
+@if (session('error'))
+    <script>
+        Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: @json(session('error')),
+        });
+    </script>
+@endif
 
-    {{-- Validasi form (menampilkan list error pertama) --}}
-    @if ($errors->any())
-        <script>
-            Swal.fire({
-                icon: 'error',
-                title: 'Gagal Login',
-                text: @json($errors->first()),
-            });
-        </script>
-    @endif
+{{-- Validasi form (menampilkan list error pertama) --}}
+@if ($errors->any())
+    <script>
+        Swal.fire({
+            icon: 'error',
+            title: 'Gagal Login',
+            text: @json($errors->first()),
+        });
+    </script>
+@endif
 @endsection

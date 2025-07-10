@@ -13,8 +13,8 @@
         </div>
 
         {{-- ===== Profile Card ===== --}}
-        <div class="w-11/12 md:w-[94%] mx-auto px-4 md:px-6">
-            <div class="relative -mt-16 md:-mt-12 bg-transparent shadow-xl rounded-2xl overflow-hidden px-6 md:px-8 py-6 backdrop-blur-xl border border-white/20">
+        <div class="w-11/12 md:w-[94%] mx-auto px-4 md:px-6 py-0">
+            <div class="relative -mt-16 md:-mt-16 bg-transparent shadow-xl rounded-2xl overflow-hidden px-6 md:px-8 py-6 backdrop-blur-xl border border-white/20">
 
                 {{-- glass layer --}}
                 <div class="absolute inset-0 bg-gradient-to-tr from-white/30 via-pink-100/20 to-purple-100/15"></div>

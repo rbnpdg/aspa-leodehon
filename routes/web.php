@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\viewController;
 use App\Http\Controllers\loginController;
 use App\Http\Controllers\profileController;
+use App\Http\Controllers\SSOController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -23,6 +24,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/profile', [viewController::class, 'showProfile'])->name('profile.show');
     Route::get('/profile/edit', [viewController::class, 'showEdit'])->name('profile.edit');
     Route::put('/profile/update', [ProfileController::class, 'update'])->name('profile.update');
+    Route::get('/redirect-airlangga', [SSOController::class, 'ssoAirlangga'])->name('sso.airlangga');
 });
 
 /* ---------- Contoh dashboard ---------- */

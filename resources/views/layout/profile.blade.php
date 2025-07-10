@@ -39,7 +39,7 @@
         }
 
         .custom-scrollbar::-webkit-scrollbar-thumb {
-            background:#0539FF;
+            background: #0539FF;
             border-radius:10px;
         }
 
@@ -66,7 +66,20 @@
             left:0;
             height:100%;
             width:0;
-            background:linear-gradient(to right,#0539FF,#9333ea);
+            background:linear-gradient(to right, #0539FF, #9333ea);
+            opacity:.8;
+            transition:width .9s ease;
+            z-index:-1
+        }
+
+        .sidebar-link-logout::before {
+            content:'';
+            position:absolute;
+            top:0;
+            left:0;
+            height:100%;
+            width:0;
+            background:linear-gradient(to right,rgb(246, 1, 1),rgb(239, 111, 111));
             opacity:.8;
             transition:width .9s ease;
             z-index:-1

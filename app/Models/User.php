@@ -7,8 +7,10 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Database\Eloquent\Concerns\HasUuids;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Contracts\Auth\MustVerifyEmail;
 
-class User extends Authenticatable
+class User extends Authenticatable implements MustVerifyEmail
 {
     use HasFactory, Notifiable, HasUuids, SoftDeletes;
 
@@ -72,6 +74,14 @@ class User extends Authenticatable
     public function siswa()
     {
         return $this->hasOne(Siswa::class, 'user_id', 'id');
+    }
+
+    public function inInstitution(string $name): bool
+    {
+        return $this->institutions()
+            ->where(function ($query) use ($name) {
+                $query->where('name', $name);
+            })->exists();
     }
 
 }

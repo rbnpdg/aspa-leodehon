@@ -8,6 +8,9 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Str;
 use App\Models\User;
+use App\Models\Institution;
+use App\Models\Role;
+use App\Models\InstitutionUserRole;
 
 class LoginController extends Controller
 {
@@ -57,7 +60,7 @@ class LoginController extends Controller
         /* ---------- Login & buat sesi ---------- */
         Auth::login($user, $request->boolean('remember'));
         $request->session()->regenerate();
-
+        
         /* ---------- Redirect ---------- */
         return redirect()->intended(route('home'))
                          ->with('success', 'Selamat datang, ' . $user->name . '!');
@@ -89,8 +92,19 @@ class LoginController extends Controller
             'foto_profil'=> null,
         ]);
 
+        $defaultInstitution = Institution::where('name', 'asrama')->first();
+        $studentRole = Role::where('name', 'Student')->first();
+
+        if ($defaultInstitution && $studentRole) {
+            InstitutionUserRole::create([
+                'user_id' => $user->id,
+                'institution_id' => $defaultInstitution->id,
+                'role_id' => $studentRole->id,
+            ]);
+        }
+
         Auth::login($user);
-        return redirect()->route('dashboard')->with('success', 'Registrasi berhasil, selamat datang!');
+        return redirect()->route('home')->with('success', 'Registrasi berhasil, selamat datang!');
 
         // --- atau arahkan ke halaman login:
         return redirect()->route('login')
